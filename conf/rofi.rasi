@@ -4,8 +4,8 @@
  */
 
 configuration {
-	display-drun:    "Activate";
-	display-run:     "Execute";
+	display-drun:    "launch";
+	display-run:     "execute";
 	show-icons:      true;	
 	sidebar-mode:    true;
 }

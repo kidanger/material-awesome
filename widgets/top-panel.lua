@@ -9,6 +9,7 @@ local apps = require('conf.apps')
 local dpi = require('beautiful').xresources.apply_dpi
 
 local icons = require('theme.icons')
+if false then
 local add_button = mat_icon_button(wibox.widget.imagebox(icons.plus))
 add_button:buttons(
   gears.table.join(
@@ -28,6 +29,8 @@ add_button:buttons(
     )
   )
 )
+end
+
 -- Create an imagebox widget which will contains an icon indicating which layout we're using.
 -- We need one layoutbox per screen.
 local LayoutBox =
@@ -69,17 +72,18 @@ local LayoutBox =
 end
 
 local TopPanel =
-  function(s, offset)
+  function(s)
   local offsetx = 0
-  if offset == true then
-    offsetx = dpi(48)
+  if s.left_panel then
+    offsetx = s.left_panel.minwidth
   end
+  local size = 24
   local panel =
     wibox(
     {
       ontop = true,
       screen = s,
-      height = dpi(48),
+      height = dpi(size),
       width = s.geometry.width - offsetx,
       x = s.geometry.x + offsetx,
       y = s.geometry.y,
@@ -87,14 +91,14 @@ local TopPanel =
       bg = beautiful.background.hue_800,
       fg = beautiful.fg_normal,
       struts = {
-        top = dpi(48)
+        top = dpi(size)
       }
     }
   )
 
   panel:struts(
     {
-      top = dpi(48)
+      top = dpi(size)
     }
   )
 
@@ -113,6 +117,7 @@ local TopPanel =
       LayoutBox(s)
     }
   }
+  panel.height = size
   print('jan')
   -- local test = panel:get_children_by_id('test')[1]
   gears.debug.dump(test)

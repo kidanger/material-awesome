@@ -44,31 +44,50 @@ local tags = {
     type = 'any',
     defaultApp = '',
     screen = 1
+  },
+  {
+    icon = icons.lab,
+    type = 'any',
+    defaultApp = '',
+    screen = 1
+  },
+  {
+    icon = icons.lab,
+    type = 'any',
+    defaultApp = '',
+    screen = 1
   }
 }
 
 awful.layout.layouts = {
   awful.layout.suit.tile,
-  awful.layout.suit.max
+  awful.layout.suit.tile.left,
+  awful.layout.suit.tile.bottom,
+  awful.layout.suit.tile.top,
+  awful.layout.suit.max,
 }
 
 awful.screen.connect_for_each_screen(
   function(s)
     for i, tag in pairs(tags) do
+      local layout = awful.layout.suit.tile
+      if i == 9 then
+        layout = awful.layout.suit.tile.bottom
+      end
       local new_tag =
-        awful.tag.add(
+      awful.tag.add(
         i,
         {
           icon = tag.icon,
           icon_only = true,
-          layout = awful.layout.suit.tile,
+          layout = layout,
           gap_single_client = false,
-          gap = 4,
+          gap = 2,
           screen = s,
           defaultApp = tag.defaultApp,
           selected = i == 1
         }
-      )
+        )
     end
   end
 )
@@ -80,7 +99,7 @@ tag.connect_signal(
     if (currentLayout == awful.layout.suit.max) then
       t.gap = 0
     else
-      t.gap = 4
+      t.gap = 2
     end
   end
 )

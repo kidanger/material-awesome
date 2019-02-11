@@ -2,17 +2,23 @@ local awful = require('awful')
 local LeftPanel = require('widgets.left-panel')
 local TopPanel = require('widgets.top-panel')
 
+local useTopPanel = true
+
 -- Create a wibox for each screen and add it
 awful.screen.connect_for_each_screen(
   function(s)
-    if s.index == 1 then
+    if s.index == 1 or true then
       -- Create the leftPanel
       s.left_panel = LeftPanel(s)
       -- Create the Top bar
-      s.top_panel = TopPanel(s, true)
+      if useTopPanel then
+        s.top_panel = TopPanel(s, true)
+      end
     else
       -- Create the Top bar
-      s.top_panel = TopPanel(s, false)
+      if useTopPanel then
+        s.top_panel = TopPanel(s, false)
+      end
     end
   end
 )
@@ -23,7 +29,9 @@ function updateBarsVisibility()
     if s.selected_tag then
       local fullscreen = s.selected_tag.fullscreenMode
       -- Order matter here for shadow
-      s.top_panel.visible = not fullscreen
+      if s.top_panel then
+        s.top_panel.visible = not fullscreen
+      end
       if s.left_panel then
         s.left_panel.visible = not fullscreen
       end
