@@ -9,6 +9,7 @@ local dpi = require('beautiful').xresources.apply_dpi
 local mat_list_item = require('widgets.mat-list-item')
 -- Clock / Calendar 24h format
 local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 11">%H\n%M</span>')
+local TaskList = require('widgets.task-list')
 
 local margin = 0
 
@@ -50,9 +51,9 @@ local LeftPanel =
   local panel =
     wibox {
     screen = s,
-    width = dpi(448),
+    width = dpi(size),
     height = s.geometry.height,
-    x = s.geometry.x + dpi(size) - dpi(448),
+    x = s.geometry.x + dpi(size) - dpi(size),
     y = s.geometry.y,
     ontop = true,
     bg = beautiful.background.hue_800,
@@ -95,20 +96,12 @@ local LeftPanel =
   end
 
   local openPanel = function(should_run_rofi)
-    --panel.x = 0
     menu_icon.image = icons.close
-    backdrop.visible = false
-    panel.visible = false
-    panel.visible = true
-    should_run_rofi = true
-    if should_run_rofi then
-      run_rofi()
-    end
+    run_rofi()
   end
 
   local closePanel = function()
     menu_icon.image = icons.menu
-    panel.x = dpi(size) - dpi(448)
     backdrop.visible = false
   end
 
@@ -219,64 +212,23 @@ local LeftPanel =
   )
 
   panel:setup {
-    layout = wibox.layout.align.horizontal,
-    nil,
+    layout = wibox.layout.align.vertical,
+    forced_width = dpi(size),
     {
-      {
-        layout = wibox.layout.align.vertical,
-        --[[
-        {
-          layout = wibox.layout.fixed.vertical,
-          {
-            search_button,
-            bg = beautiful.background.hue_800,
-            widget = wibox.container.background
-          },
-          wibox.widget {
-            orientation = 'horizontal',
-            forced_height = 1,
-            opacity = 0.08,
-            widget = wibox.widget.separator
-          },
-          require('widgets.left-panel.quick-settings'),
-          require('widgets.left-panel.hardware-monitor')
-        },
-        nil,
-        {
-          layout = wibox.layout.fixed.vertical,
-          {
-            exit_button,
-            bg = beautiful.background.hue_800,
-            widget = wibox.container.background
-          }
-        }
-        ]]
-      },
-      bg = beautiful.background.hue_900,
-      widget = wibox.container.background
+      layout = wibox.layout.fixed.vertical,
+      home_button,
+      -- Create a taglist widget
+      TagList(s),
     },
+    TaskList(s),
     {
-      layout = wibox.layout.align.vertical,
-      forced_width = dpi(size),
-      {
-        -- Left widgets
-        layout = wibox.layout.fixed.vertical,
-        home_button,
-        -- Create a taglist widget
-        TagList(s)
-      },
-      --s.mytasklist, -- Middle widget
-      nil,
-      {
-        -- Right widgets
-        layout = wibox.layout.fixed.vertical,
-        wibox.container.margin(systray, dpi(5), dpi(5)),
-        require('widgets.package-updater'),
-        --require('widgets.wifi'),
-        --require('widgets.battery'),
-        -- Clock
-        clock_widget
-      }
+      layout = wibox.layout.fixed.vertical,
+      wibox.container.margin(systray, 5, 5),
+      require('widgets.package-updater'),
+      --require('widgets.wifi'),
+      --require('widgets.battery'),
+      -- Clock
+      clock_widget
     }
   }
 
