@@ -26,7 +26,7 @@ local awesome_overrides =
 
   theme.icons = theme.dir .. '/icons/'
   --theme.wallpaper = theme.dir .. '/wallpapers/pro-dark-shadow.png'
-  theme.wallpaper = '#202020'
+  theme.wallpaper = '#404040'
   --theme.wallpaper = '#ffffff'
   theme.font = 'Roboto medium 10'
   theme.title_font = 'Roboto medium 14'
@@ -72,8 +72,8 @@ local awesome_overrides =
   theme.taglist_bg_empty = theme.background.hue_800
   theme.taglist_bg_occupied =
     'linear:0,0:48,0:0,' ..
-    theme.primary.hue_500 ..
-      ':0.08,' .. theme.primary.hue_500 .. ':0.08,' .. theme.background.hue_800 .. ':1,' .. theme.background.hue_800
+    theme.other.hue_500 ..
+      ':0.04,' .. theme.other.hue_500 .. ':0.04,' .. theme.background.hue_800 .. ':1,' .. theme.background.hue_800
   theme.taglist_bg_urgent =
     'linear:0,0:' ..
     dpi(48) ..

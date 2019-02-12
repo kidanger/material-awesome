@@ -97,7 +97,7 @@ local LeftPanel =
   local openPanel = function(should_run_rofi)
     panel.x = 0
     menu_icon.image = icons.close
-    backdrop.visible = true
+    backdrop.visible = false
     panel.visible = false
     panel.visible = true
     if should_run_rofi then

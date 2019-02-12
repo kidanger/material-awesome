@@ -31,7 +31,7 @@ local globalKeys =
   -- Hotkeys
   awful.key({modkey}, 'F1', hotkeys_popup.show_help, {description = 'show help', group = 'awesome'}),
   -- Tag browsing
-  awful.key( {modkey}, 'e', function() screen.primary.left_panel:toggle(true) end, {description = 'show main menu', group = 'awesome'} ),
+  awful.key( {modkey}, 'e', function() awful.screen.focused().left_panel:toggle(true) end, {description = 'show main menu', group = 'awesome'} ),
   --[[
   awful.key({modkey}, 'Escape', awful.tag.history.restore, {description = 'go back', group = 'tag'}),
   awful.key({modkey}, 'w', awful.tag.viewprev, {description = 'view previous', group = 'tag'}),
@@ -332,7 +332,7 @@ local globalKeys =
     -- awful.key({ modkey,           }, "w", function () awful.util.mymainmenu:show() end,
     --           {description = "show main menu", group = "awesome"}),
 
-    awful.key({ "Control", altkey, }, "l", function () awful.util.spawn('/usr/bin/i3lock -c 222222') end,
+    awful.key({ "Control", altkey, }, "l", function () awful.util.spawn(apps.lock) end,
             {description="lock the screen", group="awesome"}),
 
     -- Layout manipulation
@@ -515,12 +515,12 @@ local globalKeys =
               {description = "copy gtk to terminal", group = "hotkeys"}),
 
     -- User programs
-    awful.key({ modkey }, "b", function () awful.spawn(browser) end,
+    awful.key({ modkey }, "b", function () awful.spawn('chromium') end,
               {description = "run browser", group = "launcher"}),
 
     -- Prompt
-    awful.key({ modkey }, "r", function () awful.screen.focused().mypromptbox:run() end,
-              {description = "run prompt", group = "launcher"}),
+    --awful.key({ modkey }, "r", function () awful.screen.focused().mypromptbox:run() end,
+              --{description = "run prompt", group = "launcher"}),
 
     awful.key({ modkey }, "x",
               function ()
