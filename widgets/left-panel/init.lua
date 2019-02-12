@@ -12,40 +12,40 @@ local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 11">%H\n%
 
 local margin = 0
 
--- Clock / Calendar 12AM/PM fornat
--- local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 11">%I\n%M</span>\n<span font="Roboto Mono bold 9">%p</span>')
--- textclock.forced_height = 56
-local clock_widget = wibox.container.margin(textclock, dpi(3), dpi(3), dpi(3), dpi(3))
-local systray = wibox.widget.systray()
-systray:set_horizontal(false)
-local clickable_container = require('widgets.clickable-container')
-local icons = require('theme.icons')
-
-local menu_icon =
-  wibox.widget {
-  image = icons.menu,
-  widget = wibox.widget.imagebox
-}
-
-local home_button =
-  wibox.widget {
-  wibox.widget {
-    wibox.widget {
-      wibox.container.margin(menu_icon, 5, 5, 5, 5),
-      top = 1,
-      left = 1,
-      right = 1,
-      bottom = 1,
-      widget = wibox.container.margin
-    },
-    widget = clickable_container
-  },
-  bg = beautiful.primary.hue_500,
-  widget = wibox.container.background
-}
-
 local LeftPanel =
   function(s)
+  -- Clock / Calendar 12AM/PM fornat
+  -- local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 11">%I\n%M</span>\n<span font="Roboto Mono bold 9">%p</span>')
+  -- textclock.forced_height = 56
+  local clock_widget = wibox.container.margin(textclock, dpi(3), dpi(3), dpi(3), dpi(3))
+  local systray = wibox.widget.systray()
+  systray:set_horizontal(false)
+  local clickable_container = require('widgets.clickable-container')
+  local icons = require('theme.icons')
+
+  local menu_icon =
+    wibox.widget {
+    image = icons.menu,
+    widget = wibox.widget.imagebox
+  }
+
+  local home_button =
+    wibox.widget {
+    wibox.widget {
+      wibox.widget {
+        wibox.container.margin(menu_icon, 5, 5, 5, 5),
+        top = 1,
+        left = 1,
+        right = 1,
+        bottom = 1,
+        widget = wibox.container.margin
+      },
+      widget = clickable_container
+    },
+    bg = beautiful.primary.hue_500,
+    widget = wibox.container.background
+  }
+
   local size = 28
   local panel =
     wibox {
@@ -95,11 +95,12 @@ local LeftPanel =
   end
 
   local openPanel = function(should_run_rofi)
-    panel.x = 0
+    --panel.x = 0
     menu_icon.image = icons.close
     backdrop.visible = false
     panel.visible = false
     panel.visible = true
+    should_run_rofi = true
     if should_run_rofi then
       run_rofi()
     end
@@ -223,6 +224,7 @@ local LeftPanel =
     {
       {
         layout = wibox.layout.align.vertical,
+        --[[
         {
           layout = wibox.layout.fixed.vertical,
           {
@@ -248,6 +250,7 @@ local LeftPanel =
             widget = wibox.container.background
           }
         }
+        ]]
       },
       bg = beautiful.background.hue_900,
       widget = wibox.container.background
@@ -269,8 +272,8 @@ local LeftPanel =
         layout = wibox.layout.fixed.vertical,
         wibox.container.margin(systray, dpi(5), dpi(5)),
         require('widgets.package-updater'),
-        require('widgets.wifi'),
-        require('widgets.battery'),
+        --require('widgets.wifi'),
+        --require('widgets.battery'),
         -- Clock
         clock_widget
       }
