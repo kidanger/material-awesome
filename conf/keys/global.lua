@@ -418,10 +418,6 @@ local globalKeys =
               end,
               {description = "restore minimized", group = "client"}),
 
-    -- Dropdown application
-    awful.key({ modkey, }, "z", function () awful.screen.focused().quake:toggle() end,
-              {description = "dropdown application", group = "launcher"}),
-
     -- Widgets popups
     awful.key({ altkey, }, "c", function () lain.widget.calendar.show(7) end,
               {description = "show calendar", group = "widgets"}),
@@ -431,10 +427,10 @@ local globalKeys =
               {description = "show weather", group = "widgets"}),
 
     -- Brightness
-    awful.key({ }, "XF86MonBrightnessUp", function () awful.util.spawn("xbacklight -inc 10") end,
-              {description = "+10%", group = "hotkeys"}),
-    awful.key({ }, "XF86MonBrightnessDown", function () awful.util.spawn("xbacklight -dec 10") end,
-              {description = "-10%", group = "hotkeys"}),
+    awful.key({ modkey, altkey }, "Up", function () awful.util.spawn("xbacklight -inc 5") end,
+              {description = "+5%", group = "hotkeys"}),
+    awful.key({ modkey, altkey }, "Down", function () awful.util.spawn("xbacklight -dec 5") end,
+              {description = "-5%", group = "hotkeys"}),
 
     -- ALSA volume control
     -- awful.key({ altkey }, "Up",
@@ -472,17 +468,27 @@ local globalKeys =
         function ()
             awful.spawn.with_shell 'dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause'
         end,
-        {description = "spotify toggle", group = "widgets"}),
+        {description = "spotify toggle", group = "hotkeys"}),
     awful.key({ modkey }, "Left",
         function ()
             awful.spawn.with_shell 'dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous'
         end,
-        {description = "spotify toggle", group = "widgets"}),
+        {description = "spotify toggle", group = "hotkeys"}),
     awful.key({ modkey }, "Right",
         function ()
             awful.spawn.with_shell 'dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next'
         end,
-        {description = "spotify toggle", group = "widgets"}),
+        {description = "spotify toggle", group = "hotkeys"}),
+    awful.key({ 'Control', modkey }, "Up",
+        function ()
+            awful.spawn.with_shell 'pactl set-sink-volume @DEFAULT_SINK@ +5%'
+        end,
+        {description = "", group = "hotkeys"}),
+    awful.key({ 'Control', modkey }, "Down",
+        function ()
+            awful.spawn.with_shell 'pactl set-sink-volume @DEFAULT_SINK@ -5%'
+        end,
+        {description = "", group = "hotkeys"}),
 
     -- Copy primary to clipboard (terminals to gtk)
     awful.key({ modkey }, "c", function () awful.spawn("xsel -p -o | xsel -i -b") end,
