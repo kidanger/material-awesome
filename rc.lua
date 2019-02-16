@@ -66,3 +66,22 @@ _G.client.connect_signal(
     c.border_color = beautiful.border_normal
   end
 )
+
+tag.connect_signal("request::screen", function(t)
+    for s in screen do
+        if s ~= t.screen and
+           s.geometry.x == t.screen.geometry.x and
+           s.geometry.y == t.screen.geometry.y and
+           s.geometry.width == t.screen.geometry.width and
+           s.geometry.height == t.screen.geometry.height then
+            local t2 = awful.tag.find_by_name(s, t.name)
+            if t2 then
+                t:swap(t2)
+            else
+                t.screen = s
+            end
+            return
+        end
+    end
+end)
+

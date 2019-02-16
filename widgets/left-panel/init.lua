@@ -11,8 +11,6 @@ local mat_list_item = require('widgets.mat-list-item')
 local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 11">%H\n%M</span>')
 local TaskList = require('widgets.task-list')
 
-local margin = 0
-
 local LeftPanel =
   function(s)
   -- Clock / Calendar 12AM/PM fornat
@@ -60,6 +58,12 @@ local LeftPanel =
     fg = beautiful.fg_normal
   }
   panel.minwidth = size
+
+  --s:connect_signal('property::geometry', function()
+    --panel.x = s.geometry.x
+    --panel.y = s.geometry.y
+    --panel.height = s.geometry.height
+  --end)
 
   panel.opened = false
 
@@ -211,6 +215,8 @@ local LeftPanel =
     )
   )
 
+  local lb = awful.widget.layoutbox(s)
+
   panel:setup {
     layout = wibox.layout.align.vertical,
     forced_width = dpi(size),
@@ -228,7 +234,8 @@ local LeftPanel =
       --require('widgets.wifi'),
       --require('widgets.battery'),
       -- Clock
-      clock_widget
+      clock_widget,
+      lb,
     }
   }
 

@@ -25,8 +25,16 @@ awful.screen.connect_for_each_screen(
 
 -- Hide bars when app go fullscreen
 function updateBarsVisibility(s)
-  if s.selected_tag then
-    local fullscreen = s.selected_tag.fullscreenMode
+  if not s then return end
+  local t = s.selected_tag
+  if t then
+    local fullscreen = false
+    for _, c in pairs(t:clients()) do
+      if c.fullscreen then
+        fullscreen = true
+        break
+      end
+    end
     -- Order matter here for shadow
     if s.top_panel then
       s.top_panel.visible = not fullscreen
@@ -47,7 +55,6 @@ _G.tag.connect_signal(
 _G.client.connect_signal(
   'property::fullscreen',
   function(c)
-    c.first_tag.fullscreenMode = c.fullscreen
     updateBarsVisibility(c.screen)
   end
 )
@@ -55,9 +62,8 @@ _G.client.connect_signal(
 _G.client.connect_signal(
   'unmanage',
   function(c)
-    if c.fullscreen then
-      c.screen.selected_tag.fullscreenMode = false
-      updateBarsVisibility()
-    end
+    updateBarsVisibility(c.screen)
   end
 )
+
+
