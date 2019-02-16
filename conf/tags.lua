@@ -16,26 +16,26 @@ local tags = {
     screen = 1
   },
   {
-    icon = icons.social,
-    type = 'social',
-    defaultApp = 'station',
+    icon = icons.lab,
+    type = 'any',
+    defaultApp = '',
     screen = 1
   },
   {
-    icon = icons.folder,
-    type = 'files',
-    defaultApp = 'nautilus',
+    icon = icons.lab,
+    type = 'any',
+    defaultApp = '',
     screen = 1
   },
   {
-    icon = icons.music,
-    type = 'music',
-    defaultApp = 'youtube-music',
+    icon = icons.lab,
+    type = 'any',
+    defaultApp = '',
     screen = 1
   },
   {
-    icon = icons.game,
-    type = 'game',
+    icon = icons.lab,
+    type = 'any',
     defaultApp = '',
     screen = 1
   },
@@ -172,6 +172,14 @@ local function update_tag_icon(t)
   end
 
   local name = bestc.class
+  if false then
+  elseif bestc.name and bestc.name:match 'Gmail' then
+    name = 'gmail'
+  elseif bestc.name and bestc.name:match 'Slack' then
+    name = 'slack'
+  elseif name == 'Terminator' then
+    name = 'gnome-terminal'
+  end
   cache[name] = cache[name]
              or _G.iconfinder:find(name)
              or _G.iconfinder:find(name:lower())

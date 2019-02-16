@@ -2,6 +2,7 @@ local gears = require('gears')
 local awful = require('awful')
 require('awful.autofocus')
 local beautiful = require('beautiful')
+local filesystem = require('gears.filesystem')
 
 -- Theme
 beautiful.init(require('theme'))
@@ -18,6 +19,8 @@ require('module.quake-terminal')
 require('luarocks.loader')
 local icon_finder = require('module.icon-finder')
 iconapps_dir = {
+  filesystem.get_configuration_dir() .. "theme/icons/",
+  "/usr/share/icons/Papirus/16x16/",
   "/usr/share/icons/Papirus/16x16/",
   "/usr/share/icons/oxygen/base/16x16/",
   "/usr/share/icons/hicolor/16x16/",

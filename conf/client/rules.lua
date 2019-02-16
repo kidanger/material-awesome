@@ -29,7 +29,7 @@ awful.rules.rules = {
       placement = awful.placement.centered,
       ontop = true,
       floating = true,
-      drawBackdrop = true,
+      --drawBackdrop = true,
       shape = function()
         return function(cr, w, h)
           gears.shape.rounded_rect(cr, w, h, 8)
