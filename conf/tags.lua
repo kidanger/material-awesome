@@ -152,3 +152,62 @@ tag.connect_signal(
     end
   end
 )
+
+local cache = {}
+local fallback = icons.lab
+
+local function update_tag_icon(t)
+  local bestc = nil
+  local bestn = -1
+  for _, c in ipairs(t:clients()) do
+    if c.lastfocus and c.lastfocus > bestn then
+      bestc = c
+      bestn = c.lastfocus
+    end
+  end
+
+  if not bestc or not bestc.class then
+    t.icon = fallback
+    return
+  end
+
+  local name = bestc.class
+  cache[name] = cache[name]
+             or _G.iconfinder:find(name)
+             or _G.iconfinder:find(name:lower())
+             or fallback
+  t.icon = cache[name]
+end
+
+local n = 0
+_G.client.connect_signal(
+  'focus',
+  function(c)
+    c.lastfocus = n
+    n = n + 1
+    for _, t in ipairs(c:tags()) do
+      update_tag_icon(t)
+    end
+  end
+)
+_G.client.connect_signal(
+  'unfocus',
+  function(c)
+    for _, t in ipairs(c:tags()) do
+      update_tag_icon(t)
+    end
+  end
+)
+_G.tag.connect_signal(
+  'tagged',
+  function(t)
+    update_tag_icon(t)
+  end
+)
+_G.tag.connect_signal(
+  'untagged',
+  function(t)
+    update_tag_icon(t)
+  end
+)
+

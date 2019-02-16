@@ -226,7 +226,8 @@ local LeftPanel =
       -- Create a taglist widget
       TagList(s),
     },
-    TaskList(s),
+    --TaskList(s),
+    nil,
     {
       layout = wibox.layout.fixed.vertical,
       wibox.container.margin(systray, 5, 5),

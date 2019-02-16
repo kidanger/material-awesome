@@ -15,6 +15,19 @@ require('module.panel')
 require('module.exit-screen')
 require('module.quake-terminal')
 
+require('luarocks.loader')
+local icon_finder = require('module.icon-finder')
+iconapps_dir = {
+  "/usr/share/icons/Papirus/16x16/",
+  "/usr/share/icons/oxygen/base/16x16/",
+  "/usr/share/icons/hicolor/16x16/",
+  "/usr/share/icons/gnome/16x16/",
+  "/usr/share/icons/Tango/16x16/",
+  "/usr/share/pixmaps/",
+}
+_G.iconfinder = icon_finder.new(iconapps_dir)
+
+
 -- Setup all configurations
 require('conf.client')
 require('conf.tags')
