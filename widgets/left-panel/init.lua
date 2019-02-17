@@ -240,6 +240,14 @@ local LeftPanel =
     }
   }
 
+  _G.client.connect_signal('focus', function(c)
+    local screen = c.screen
+    if s == screen and systray.screen ~= screen then
+      systray:set_screen(screen)
+      systray.screen = screen
+    end
+  end)
+
   return panel
 end
 
