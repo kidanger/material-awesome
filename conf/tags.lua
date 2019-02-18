@@ -67,7 +67,6 @@ awful.layout.layouts = {
   awful.layout.suit.max,
 }
 
-mtags = {}
 awful.screen.connect_for_each_screen(
   function(s)
     --if true then return end
@@ -93,6 +92,8 @@ awful.screen.connect_for_each_screen(
     end
   end
 )
+
+mtags = {}
 awful.screen.connect_for_each_screen(
   function(s)
     if true then return end

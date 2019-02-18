@@ -53,7 +53,8 @@ local LeftPanel =
     height = s.geometry.height,
     x = s.geometry.x + dpi(size) - dpi(size),
     y = s.geometry.y,
-    ontop = true,
+    ontop = false,
+    visible = true,
     bg = beautiful.background.hue_800,
     fg = beautiful.fg_normal
   }
