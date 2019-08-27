@@ -14,22 +14,26 @@ require('module.decorate-client')
 require('module.backdrop')
 require('module.panel')
 require('module.exit-screen')
-require('module.quake-terminal')
+--require('module.quake-terminal')
 
+if false then
 require('luarocks.loader')
 local icon_finder = require('module.icon-finder')
 iconapps_dir = {
   filesystem.get_configuration_dir() .. "theme/icons/",
-  "/usr/share/icons/Papirus/16x16/",
-  "/usr/share/icons/Papirus/16x16/",
-  "/usr/share/icons/oxygen/base/16x16/",
-  "/usr/share/icons/hicolor/16x16/",
-  "/usr/share/icons/gnome/16x16/",
-  "/usr/share/icons/Tango/16x16/",
+  --"/usr/share/icons/Papirus/16x16/",
+  --"/usr/share/icons/Papirus/16x16/",
+  --"/usr/share/icons/oxygen/base/16x16/",
+  --"/usr/share/icons/hicolor/16x16/",
+  --"/usr/share/icons/gnome/16x16/",
+  --"/usr/share/icons/Tango/16x16/",
+  "/usr/share/icons/Adwaita/16x16/",
+  "/usr/share/icons/default/",
+  "/usr/share/icons/HighContrast/16x16/",
   "/usr/share/pixmaps/",
 }
 _G.iconfinder = icon_finder.new(iconapps_dir)
-
+end
 
 -- Setup all configurations
 require('conf.client')

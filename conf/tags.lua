@@ -158,6 +158,7 @@ local cache = {}
 local fallback = icons.lab
 
 local function update_tag_icon(t)
+  if not _G.iconfinder then return end
   local bestc = nil
   local bestn = -1
   for _, c in ipairs(t:clients()) do

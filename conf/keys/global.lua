@@ -344,8 +344,8 @@ local globalKeys =
               {description = "focus the next screen", group = "screen"}),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
               {description = "focus the previous screen", group = "screen"}),
-    awful.key({ modkey,           }, "a", awful.client.urgent.jumpto,
-              {description = "jump to urgent client", group = "client"}),
+    --awful.key({ modkey,           }, "a", awful.client.urgent.jumpto,
+              --{description = "jump to urgent client", group = "client"}),
     awful.key({ modkey,           }, "Tab",
         function ()
             awful.client.focus.history.previous()
@@ -498,7 +498,14 @@ local globalKeys =
               {description = "copy gtk to terminal", group = "hotkeys"}),
 
     -- User programs
-    awful.key({ modkey }, "b", function () awful.spawn('chromium') end,
+    awful.key({ modkey }, "b", function ()
+                --awful.spawn('chromium-browser')
+                awful.spawn('brave-browser-beta')
+              end,
+              {description = "run browser", group = "launcher"}),
+    awful.key({ modkey, 'Shift', }, "b", function ()
+                awful.spawn('firefox')
+              end,
               {description = "run browser", group = "launcher"}),
 
     -- Prompt

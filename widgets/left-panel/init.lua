@@ -10,6 +10,7 @@ local mat_list_item = require('widgets.mat-list-item')
 -- Clock / Calendar 24h format
 local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 11">%H\n%M</span>')
 local TaskList = require('widgets.task-list')
+local cpu = require('widgets.cputhrottle')
 
 local LeftPanel =
   function(s)
@@ -232,10 +233,11 @@ local LeftPanel =
     {
       layout = wibox.layout.fixed.vertical,
       wibox.container.margin(systray, 5, 5),
-      require('widgets.package-updater'),
+      --require('widgets.package-updater'),
       --require('widgets.wifi'),
       --require('widgets.battery'),
       -- Clock
+      cpu,
       clock_widget,
       lb,
     }
