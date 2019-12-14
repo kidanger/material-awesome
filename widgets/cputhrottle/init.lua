@@ -71,6 +71,7 @@ volumearc:connect_signal("button::press", function(_, _, _, button)
         update_graphic(volumearc, stdout, stderr, exitreason, exitcode)
     end)
 end)
+awful.spawn('env FREQ=2000 ' .. GET_VOLUME_CMD, false)
 
 watch(GET_VOLUME_CMD, 30, update_graphic, volumearc)
 

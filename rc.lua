@@ -105,3 +105,7 @@ tag.connect_signal("request::screen", function(t)
     end
 end)
 
+client.connect_signal("property::minimized", function(c)
+    c.minimized = false
+end)
+
