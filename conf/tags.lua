@@ -4,55 +4,55 @@ local icons = require('theme.icons')
 
 local tags = {
   {
-    icon = icons.chrome,
+    icon = icons.void,
     type = 'chrome',
     defaultApp = 'google-chrome-beta',
     screen = 1
   },
   {
-    icon = icons.code,
+    icon = icons.void,
     type = 'code',
     defaultApp = 'code',
     screen = 1
   },
   {
-    icon = icons.lab,
+    icon = icons.void,
     type = 'any',
     defaultApp = '',
     screen = 1
   },
   {
-    icon = icons.lab,
+    icon = icons.void,
     type = 'any',
     defaultApp = '',
     screen = 1
   },
   {
-    icon = icons.lab,
+    icon = icons.void,
     type = 'any',
     defaultApp = '',
     screen = 1
   },
   {
-    icon = icons.lab,
+    icon = icons.void,
     type = 'any',
     defaultApp = '',
     screen = 1
   },
   {
-    icon = icons.lab,
+    icon = icons.void,
     type = 'any',
     defaultApp = '',
     screen = 1
   },
   {
-    icon = icons.lab,
+    icon = icons.void,
     type = 'any',
     defaultApp = '',
     screen = 1
   },
   {
-    icon = icons.lab,
+    icon = icons.void,
     type = 'any',
     defaultApp = '',
     screen = 1
@@ -155,7 +155,7 @@ tag.connect_signal(
 )
 
 local cache = {}
-local fallback = icons.lab
+local fallback = icons.void
 
 local function update_tag_icon(t)
   if not _G.iconfinder then return end
