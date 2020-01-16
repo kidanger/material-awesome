@@ -11,12 +11,12 @@ configuration {
 }
 
 * {
-	background-color:            rgb(18, 30, 37);
-	text-color:                  #d3d7cf;
-	selbg:                       rgb(0, 86, 136);
-	actbg:                       rgb(22, 37, 46);
+	background-color:            rgb(200, 200, 200);
+	text-color:                  #161616;
+	selbg:                       rgb(86, 86, 86);
+	actbg:                       rgb(22, 22, 22);
 	urgbg:                       #e53935;
-	winbg:			     #26c6da;
+	winbg:			             #bbbbbb;
 
 	selected-normal-foreground:  @winbg;
 	normal-foreground:           @text-color;
@@ -72,11 +72,11 @@ inputbar {
      children: [ entry ];
 }
 
-textbox-prompt-colon {                                                
-     text-color: inherit;                                              
-     expand: false;                                                    
+textbox-prompt-colon {
+     text-color: inherit;
+     expand: false;
      margin: 0 0.3em 0em 0em;
- }  
+}
 
 listview {
 	spacing: 0em;
@@ -92,7 +92,7 @@ element {
 entry {
 	expand:         true;
 	text-color:     @normal-foreground;
-	background-color: rgb(25, 41, 51);
+	background-color: rgb(150, 150, 150);
 	vertical-align: 1;
 	padding:        12px;
 	font:            "Roboto medium 13";

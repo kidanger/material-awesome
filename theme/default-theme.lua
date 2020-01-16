@@ -17,7 +17,7 @@ theme.accent = mat_colors.pink
 
 -- Background
 theme.background = mat_colors.grey
-theme.other = mat_colors.blue
+theme.other = mat_colors.grey
 
 local awesome_overrides =
   function(theme)
@@ -26,7 +26,7 @@ local awesome_overrides =
 
   theme.icons = theme.dir .. '/icons/'
   --theme.wallpaper = theme.dir .. '/wallpapers/pro-dark-shadow.png'
-  theme.wallpaper = '#404040'
+  theme.wallpaper = '#A0A0A0'
   --theme.wallpaper = '#ffffff'
   theme.font = 'Roboto medium 10'
   theme.title_font = 'Roboto medium 14'
@@ -44,7 +44,7 @@ local awesome_overrides =
 
   -- Borders
 
-  theme.border_width = dpi(2)
+  theme.border_width = dpi(5)
   theme.border_normal = theme.background.hue_800
   theme.border_focus = theme.primary.hue_300
   theme.border_marked = '#CC9393'
@@ -71,8 +71,7 @@ local awesome_overrides =
 
   theme.taglist_bg_empty = theme.background.hue_800
   theme.taglist_bg_occupied =
-    'linear:0,0:48,0:0,' ..
-    theme.other.hue_500 ..
+    'linear:0,0:48,0:0,' .. theme.other.hue_500 ..
       ':0.04,' .. theme.other.hue_500 .. ':0.04,' .. theme.background.hue_800 .. ':1,' .. theme.background.hue_800
   theme.taglist_bg_urgent =
     'linear:0,0:' ..
@@ -105,7 +104,7 @@ local awesome_overrides =
   theme.icon_theme = 'Papirus-Dark'
 
   --Client
-  theme.border_width = dpi(2)
+  theme.border_width = dpi(5)
   theme.border_focus = theme.primary.hue_300
   theme.border_normal = theme.background.hue_800
 end

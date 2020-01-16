@@ -17,8 +17,8 @@ local function renderClient(client, mode)
   elseif client.rendering_mode == 'tiled' then
     client.border_width = beautiful.border_width
     client.shape = function(cr, w, h)
-      --gears.shape.rounded_rect(cr, w, h, 6)
-      gears.shape.rectangle(cr, w, h, 6)
+      gears.shape.rounded_rect(cr, w, h, 6)
+      --gears.shape.rectangle(cr, w, h, 6)
     end
   end
 end
@@ -97,3 +97,4 @@ _G.client.connect_signal(
 _G.tag.connect_signal('property::selected', tagCallback)
 
 _G.tag.connect_signal('property::layout', tagCallback)
+
