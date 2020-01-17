@@ -26,7 +26,8 @@ local awesome_overrides =
 
   theme.icons = theme.dir .. '/icons/'
   --theme.wallpaper = theme.dir .. '/wallpapers/pro-dark-shadow.png'
-  theme.wallpaper = '#A0A0A0'
+  --theme.wallpaper = '#A0A0A0'
+  theme.wallpaper = '#EEEEEE'
   --theme.wallpaper = '#ffffff'
   theme.font = 'Roboto medium 10'
   theme.title_font = 'Roboto medium 14'
@@ -69,22 +70,19 @@ local awesome_overrides =
 
   -- Taglist
 
-  theme.taglist_bg_empty = theme.background.hue_800
-  theme.taglist_bg_occupied =
-    'linear:0,0:48,0:0,' .. theme.other.hue_500 ..
-      ':0.04,' .. theme.other.hue_500 .. ':0.04,' .. theme.background.hue_800 .. ':1,' .. theme.background.hue_800
+  theme.taglist_bg_empty = theme.background.hue_200
   theme.taglist_bg_urgent =
     'linear:0,0:' ..
     dpi(48) ..
       ',0:0,' ..
-        theme.accent.hue_500 ..
-          ':0.1,' .. theme.accent.hue_500 .. ':0.1,' .. theme.background.hue_800 .. ':1,' .. theme.background.hue_800
+        theme.accent.hue_700 ..
+          ':0.1,' .. theme.accent.hue_700 .. ':0.1,' .. theme.background.hue_200 .. ':1,' .. theme.background.hue_200
+
+  theme.taglist_bg_occupied =
+    --'linear:0,0:28,0:0,' .. theme.other.hue_200 .. ':0.7,' .. theme.other.hue_200 .. ':0.7,' .. theme.other.hue_300 .. ':0.8,' .. theme.background.hue_300 .. ':0.8,' .. theme.background.hue_200 .. ':1,' .. theme.background.hue_200
+    'linear:0,0:' .. dpi(28) .. ',0:0,' .. theme.other.hue_200 .. ':0.75,' .. theme.other.hue_200 .. ':0.75,' .. theme.background.hue_350 .. ':0.85,' .. theme.background.hue_350 .. ':0.85,' .. theme.background.hue_200 .. ':1,' .. theme.background.hue_200
   theme.taglist_bg_focus =
-    'linear:0,0:' ..
-    dpi(48) ..
-      ',0:0,' ..
-        theme.other.hue_500 ..
-          ':0.1,' .. theme.other.hue_500 .. ':0.1,' .. theme.background.hue_800 .. ':1,' .. theme.background.hue_800
+    'linear:0,0:' .. dpi(28) .. ',0:0,' .. theme.other.hue_200 .. ':0.75,' .. theme.other.hue_200 .. ':0.75,' .. theme.background.hue_700 .. ':0.85,' .. theme.background.hue_700 .. ':0.85,' .. theme.background.hue_200 .. ':1,' .. theme.background.hue_200
 
   -- Tasklist
 
@@ -104,9 +102,9 @@ local awesome_overrides =
   theme.icon_theme = 'Papirus-Dark'
 
   --Client
-  theme.border_width = dpi(5)
-  theme.border_focus = theme.primary.hue_300
-  theme.border_normal = theme.background.hue_800
+  theme.border_width = dpi(2)
+  theme.border_focus = theme.primary.hue_700
+  theme.border_normal = theme.background.hue_300
 end
 return {
   theme = theme,

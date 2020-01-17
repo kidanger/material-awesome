@@ -25,7 +25,7 @@ local LeftPanel =
 
   local menu_icon =
     wibox.widget {
-    image = icons.menu,
+    --image = icons.menu,
     widget = wibox.widget.imagebox
   }
 
@@ -56,8 +56,9 @@ local LeftPanel =
     y = s.geometry.y,
     ontop = false,
     visible = true,
-    bg = beautiful.background.hue_800,
-    fg = beautiful.fg_normal
+    bg = beautiful.background.hue_200,
+    --fg = beautiful.fg_normal
+    fg = beautiful.background.hue_700,
   }
   panel.minwidth = size
 
@@ -102,12 +103,12 @@ local LeftPanel =
   end
 
   local openPanel = function(should_run_rofi)
-    menu_icon.image = icons.close
+    --menu_icon.image = icons.close
     run_rofi()
   end
 
   local closePanel = function()
-    menu_icon.image = icons.menu
+    --menu_icon.image = icons.menu
     backdrop.visible = false
   end
 
@@ -224,11 +225,10 @@ local LeftPanel =
     forced_width = dpi(size),
     {
       layout = wibox.layout.fixed.vertical,
-      home_button,
-      -- Create a taglist widget
+      spacing = 4,
+      menu_icon,
       TagList(s),
     },
-    --TaskList(s),
     nil,
     {
       layout = wibox.layout.fixed.vertical,

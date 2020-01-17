@@ -1,3 +1,4 @@
+local gears = require('gears')
 local awful = require('awful')
 local wibox = require('wibox')
 local dpi = require('beautiful').xresources.apply_dpi
@@ -110,10 +111,10 @@ end
 
 local TagList =
   function(s)
-  return awful.widget.taglist(
-    s,
-    awful.widget.taglist.filter.all,
-    awful.util.table.join(
+  return awful.widget.taglist {
+    screen=s,
+    filter=awful.widget.taglist.filter.all,
+    buttons=awful.util.table.join(
       awful.button(
         {},
         1,
@@ -156,9 +157,12 @@ local TagList =
         end
       )
     ),
-    {},
-    list_update,
-    wibox.layout.fixed.vertical()
-  )
+    update_function=list_update,
+    layout={
+      spacing=4,
+      layout=wibox.layout.fixed.vertical,
+    }
+  }
 end
 return TagList
+

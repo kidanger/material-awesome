@@ -290,6 +290,7 @@ return {
     hue_100 = '#F5F5F5',
     hue_200 = '#EEEEEE',
     hue_300 = '#E0E0E0',
+    hue_350 = '#C8C8C8',
     hue_400 = '#BDBDBD',
     hue_500 = '#9E9E9E',
     hue_600 = '#757575',

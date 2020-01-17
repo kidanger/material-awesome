@@ -2,7 +2,7 @@ local awful = require('awful')
 local gears = require('gears')
 local icons = require('theme.icons')
 
-local GAP=4
+local GAP=6
 
 local tags = {
   {
@@ -85,7 +85,7 @@ awful.screen.connect_for_each_screen(
           icon = tag.icon,
           icon_only = true,
           layout = layout,
-          gap_single_client = false,
+          gap_single_client = true,
           gap = GAP,
           screen = s,
           defaultApp = tag.defaultApp,
@@ -149,10 +149,11 @@ tag.connect_signal(
   function(t)
     local currentLayout = awful.tag.getproperty(t, 'layout')
     if (currentLayout == awful.layout.suit.max) then
-      t.gap = 0
+      --t.gap = 0
     else
       t.gap = GAP
     end
+    t.gap = GAP
   end
 )
 
