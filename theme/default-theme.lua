@@ -58,7 +58,7 @@ local awesome_overrides =
   -- Tooltips
   theme.tooltip_bg = '#232323'
   --theme.tooltip_border_color = '#232323'
-  theme.tooltip_border_width = 0
+  theme.tooltip_border_width = 5
   theme.tooltip_shape = function(cr, w, h)
     gears.shape.rounded_rect(cr, w, h, dpi(6))
   end
@@ -70,19 +70,25 @@ local awesome_overrides =
 
   -- Taglist
 
-  theme.taglist_bg_empty = theme.background.hue_200
+  local main = theme.background.hue_850
+  local weak = theme.background.hue_450
+  local back = theme.background.hue_200
+  T_MAIN = main
+  T_WEAK = weak
+  T_BACK = back
+
+  theme.taglist_bg_empty = back
   theme.taglist_bg_urgent =
     'linear:0,0:' ..
     dpi(48) ..
       ',0:0,' ..
         theme.accent.hue_700 ..
-          ':0.1,' .. theme.accent.hue_700 .. ':0.1,' .. theme.background.hue_200 .. ':1,' .. theme.background.hue_200
+          ':0.1,' .. theme.accent.hue_700 .. ':0.1,' .. back .. ':1,' .. back
 
   theme.taglist_bg_occupied =
-    --'linear:0,0:28,0:0,' .. theme.other.hue_200 .. ':0.7,' .. theme.other.hue_200 .. ':0.7,' .. theme.other.hue_300 .. ':0.8,' .. theme.background.hue_300 .. ':0.8,' .. theme.background.hue_200 .. ':1,' .. theme.background.hue_200
-    'linear:0,0:' .. dpi(28) .. ',0:0,' .. theme.other.hue_200 .. ':0.75,' .. theme.other.hue_200 .. ':0.75,' .. theme.background.hue_350 .. ':0.85,' .. theme.background.hue_350 .. ':0.85,' .. theme.background.hue_200 .. ':1,' .. theme.background.hue_200
+    'linear:0,0:' .. dpi(28) .. ',0:0,' .. theme.other.hue_200 .. ':0.75,' .. theme.other.hue_200 .. ':0.75,' .. weak .. ':0.85,' .. weak .. ':0.85,' .. back .. ':1,' .. back
   theme.taglist_bg_focus =
-    'linear:0,0:' .. dpi(28) .. ',0:0,' .. theme.other.hue_200 .. ':0.75,' .. theme.other.hue_200 .. ':0.75,' .. theme.background.hue_700 .. ':0.85,' .. theme.background.hue_700 .. ':0.85,' .. theme.background.hue_200 .. ':1,' .. theme.background.hue_200
+    'linear:0,0:' .. dpi(28) .. ',0:0,' .. theme.other.hue_200 .. ':0.75,' .. theme.other.hue_200 .. ':0.75,' .. main .. ':0.85,' .. main .. ':0.85,' .. back .. ':1,' .. back
 
   -- Tasklist
 

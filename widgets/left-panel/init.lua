@@ -56,9 +56,9 @@ local LeftPanel =
     y = s.geometry.y,
     ontop = false,
     visible = true,
-    bg = beautiful.background.hue_200,
+    bg = T_BACK,
     --fg = beautiful.fg_normal
-    fg = beautiful.background.hue_700,
+    fg = T_MAIN,
   }
   panel.minwidth = size
 
@@ -232,6 +232,7 @@ local LeftPanel =
     nil,
     {
       layout = wibox.layout.fixed.vertical,
+      spacing=4,
       wibox.container.margin(systray, 5, 5),
       --require('widgets.package-updater'),
       --require('widgets.wifi'),

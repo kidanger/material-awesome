@@ -11,15 +11,14 @@ configuration {
 }
 
 * {
-	background-color:            rgb(200, 200, 200);
-	text-color:                  #161616;
-	selbg:                       rgb(86, 86, 86);
-	actbg:                       rgb(22, 22, 22);
+	background-color:            #eeeeee;
+	text-color:                  #313131;
+	weak:                        #A8A8A8;
+	actbg:                       #eeeeee;
 	urgbg:                       #e53935;
-	winbg:			             #bbbbbb;
 
-	selected-normal-foreground:  @winbg;
-	normal-foreground:           @text-color;
+	selected-normal-foreground:  @text-color;
+	normal-foreground:           @weak;
 	selected-normal-background:  @actbg;
 	normal-background:           @background-color;
 
@@ -28,10 +27,10 @@ configuration {
 	selected-urgent-background:  @urgbg;
 	urgent-background:           @background-color;
 
-	selected-active-foreground:  @winbg;
-	active-foreground:           @text-color;
-	selected-active-background:  @actbg;
-	active-background:           @selbg;
+	selected-active-foreground:  @text-color;
+	active-foreground:           @weak;
+	selected-active-background:  @background-color;
+	active-background:           @background-color;
 
 	line-margin:                 2;
 	line-padding:                2;
@@ -45,7 +44,7 @@ configuration {
 window {
 	location:	 west;
 	anchor:		 west;
-	x-offset: 0px;
+	x-offset: 24px;
 	height:		 100%;
 	width:		 400px;
 	margin-right: 60px;
@@ -91,8 +90,8 @@ element {
 
 entry {
 	expand:         true;
-	text-color:     @normal-foreground;
-	background-color: rgb(150, 150, 150);
+	text-color:     @selected-normal-foreground;
+	background-color: #eeeeee;
 	vertical-align: 1;
 	padding:        12px;
 	font:            "Roboto medium 13";
