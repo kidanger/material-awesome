@@ -19,6 +19,14 @@ theme.accent = mat_colors.pink
 theme.background = mat_colors.grey
 theme.other = mat_colors.grey
 
+local main = theme.background.hue_850
+local weak = theme.background.hue_450
+local back = theme.background.hue_200
+T_MAIN = main
+T_WEAK = weak
+T_BACK = back
+
+
 local awesome_overrides =
   function(theme)
   theme.dir = os.getenv('HOME') .. '/.config/awesome/theme'
@@ -38,16 +46,16 @@ local awesome_overrides =
   theme.fg_urgent = '#CC9393'
   theme.bat_fg_critical = '#232323'
 
-  theme.bg_normal = theme.background.hue_800
+  theme.bg_normal = main
   theme.bg_focus = '#5a5a5a'
   theme.bg_urgent = '#3F3F3F'
-  theme.bg_systray = theme.background.hue_800
+  theme.bg_systray = main
 
   -- Borders
 
   theme.border_width = dpi(5)
-  theme.border_normal = theme.background.hue_800
-  theme.border_focus = theme.primary.hue_300
+  theme.border_normal = main
+  theme.border_focus = weak
   theme.border_marked = '#CC9393'
 
   -- Menu
@@ -69,13 +77,6 @@ local awesome_overrides =
   theme.layout_tile = theme.icons .. 'layouts/view-quilt.png'
 
   -- Taglist
-
-  local main = theme.background.hue_850
-  local weak = theme.background.hue_450
-  local back = theme.background.hue_200
-  T_MAIN = main
-  T_WEAK = weak
-  T_BACK = back
 
   theme.taglist_bg_empty = back
   theme.taglist_bg_urgent =
@@ -109,8 +110,8 @@ local awesome_overrides =
 
   --Client
   theme.border_width = dpi(2)
-  theme.border_focus = theme.primary.hue_700
-  theme.border_normal = theme.background.hue_300
+  theme.border_focus = main
+  theme.border_normal = weak
 end
 return {
   theme = theme,
