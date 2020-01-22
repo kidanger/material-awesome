@@ -25,25 +25,7 @@ local LeftPanel =
 
   local menu_icon =
     wibox.widget {
-    --image = icons.menu,
     widget = wibox.widget.imagebox
-  }
-
-  local home_button =
-    wibox.widget {
-    wibox.widget {
-      wibox.widget {
-        wibox.container.margin(menu_icon, 5, 5, 5, 5),
-        top = 1,
-        left = 1,
-        right = 1,
-        bottom = 1,
-        widget = wibox.container.margin
-      },
-      widget = clickable_container
-    },
-    bg = beautiful.primary.hue_500,
-    widget = wibox.container.background
   }
 
   local size = 28
@@ -76,18 +58,6 @@ local LeftPanel =
     }
   )
 
-  local backdrop =
-    wibox {
-    ontop = true,
-    screen = s,
-    bg = '#00000000',
-    type = 'dock',
-    x = s.geometry.x,
-    y = s.geometry.y,
-    width = s.geometry.width,
-    height = s.geometry.height
-  }
-
   local run_rofi =
     function()
     awesome.spawn(
@@ -103,13 +73,10 @@ local LeftPanel =
   end
 
   local openPanel = function(should_run_rofi)
-    --menu_icon.image = icons.close
     run_rofi()
   end
 
   local closePanel = function()
-    --menu_icon.image = icons.menu
-    backdrop.visible = false
   end
 
   function panel:toggle(should_run_rofi)
@@ -120,32 +87,6 @@ local LeftPanel =
       closePanel()
     end
   end
-
-  backdrop:buttons(
-    awful.util.table.join(
-      awful.button(
-        {},
-        1,
-        function()
-          panel:toggle()
-        end
-      )
-    )
-  )
-
-  home_button:buttons(
-    gears.table.join(
-      awful.button(
-        {},
-        1,
-        nil,
-        function()
-          panel:toggle()
-          --awful.spawn(apps.rofi)
-        end
-      )
-    )
-  )
 
   local search_button =
     wibox.widget {
@@ -233,7 +174,8 @@ local LeftPanel =
     {
       layout = wibox.layout.fixed.vertical,
       spacing=4,
-      wibox.container.margin(systray, 5, 5),
+      --wibox.container.margin(systray, 5, 5),
+      systray,
       --require('widgets.package-updater'),
       --require('widgets.wifi'),
       --require('widgets.battery'),

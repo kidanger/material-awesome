@@ -47,10 +47,10 @@ local awesome_overrides =
   theme.fg_urgent = '#CC9393'
   theme.bat_fg_critical = '#232323'
 
-  theme.bg_normal = main
+  theme.bg_normal = back
   theme.bg_focus = '#5a5a5a'
   theme.bg_urgent = '#3F3F3F'
-  theme.bg_systray = main
+  theme.bg_systray = back
 
   -- Borders
 
