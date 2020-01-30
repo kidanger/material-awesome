@@ -64,8 +64,12 @@ local awesome_overrides =
   theme.menu_height = dpi(16)
   theme.menu_width = dpi(160)
 
+  theme.notification_bg = back
+  theme.notification_fg = main
+
   -- Tooltips
-  theme.tooltip_bg = '#232323'
+  theme.tooltip_bg = back
+  theme.tooltip_fg = main
   --theme.tooltip_border_color = '#232323'
   theme.tooltip_border_width = 5
   theme.tooltip_shape = function(cr, w, h)
