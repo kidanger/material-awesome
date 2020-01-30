@@ -499,8 +499,9 @@ local globalKeys =
 
     -- User programs
     awful.key({ modkey }, "b", function ()
-                --awful.spawn('chromium-browser')
-                awful.spawn('brave-browser-beta')
+                awful.spawn('firefox')
+                --awful.spawn('chromium')
+                --awful.spawn('brave-browser-beta')
               end,
               {description = "run browser", group = "launcher"}),
     awful.key({ modkey, 'Shift', }, "b", function ()
